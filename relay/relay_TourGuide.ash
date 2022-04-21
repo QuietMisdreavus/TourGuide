@@ -47583,9 +47583,9 @@ void IOTMBoomBoxGenerateTasks(ChecklistEntry [int] task_entries, ChecklistEntry 
 	int boomboxProgress = get_property_int("_boomBoxFights");
 	string [int] description;
 	{
-		if (song = "")
+		if (song == "")
 		{
-			song = "The Sounds of Silence";
+			song = "The Sound of Silence";
 		}
 		description.listAppend("Currently playing " + song + ", the soundtrack of your life!");
 		description.listAppend("Currently " + boomboxProgress + "/11 fights until next drop.");
