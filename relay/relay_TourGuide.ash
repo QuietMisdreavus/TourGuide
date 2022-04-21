@@ -47598,7 +47598,7 @@ void IOTMBoomBoxGenerateTasks(ChecklistEntry [int] task_entries, ChecklistEntry 
 			description.listAppend(HTMLGenerateSpanFont("Boombox drop next fight", "red"));
 		}
 		description.listAppend("" + changes_left + " song changes left today.");
-		optional_task_entries.listAppend(ChecklistEntryMake("__item SongBoom&trade; BoomBox", "inv_use.php?pwd=" + my_hash() + "&whichitem=9919", ChecklistSubentryMake("Boombox song stuff", "", description), -11));
+		resource_entries.listAppend(ChecklistEntryMake("__item SongBoom&trade; BoomBox", "inv_use.php?pwd=" + my_hash() + "&whichitem=9919", ChecklistSubentryMake("Boombox song stuff", "", description), -11));
 	}	
 	
 	if (song == "" && changes_left > 0)
@@ -47610,7 +47610,7 @@ void IOTMBoomBoxGenerateTasks(ChecklistEntry [int] task_entries, ChecklistEntry 
 			description.listAppend("Food Vibrations: extra adventures from food" + (__misc_state["in run"] ? ", +30% food drop" : "") + ".");
 		description.listAppend("Total Eclipse of Your Meat: extra meat, +30% meat.");
 		
-		optional_task_entries.listAppend(ChecklistEntryMake("__item SongBoom&trade; BoomBox", "inv_use.php?pwd=" + my_hash() + "&whichitem=9919", ChecklistSubentryMake("Set BoomBox song", "", description), 8));
+		resource_entries.listAppend(ChecklistEntryMake("__item SongBoom&trade; BoomBox", "inv_use.php?pwd=" + my_hash() + "&whichitem=9919", ChecklistSubentryMake("Set BoomBox song", "", description), 8));
 	}
 	
 }
@@ -50138,19 +50138,19 @@ void IOTMCrystalBallGenerateTasks(ChecklistEntry [int] task_entries, ChecklistEn
 	location crystalBallZone = (get_property_location("crystalBallLocation"));
 	image_name = "__monster " + crystalBallPrediction;
 	string [int] description;
-	string url;
+	string url = invSearch("miniature crystal ball");
 	if (!lookupItem("miniature crystal ball").equipped())
 	{
 		if (crystalBallPrediction != $monster[none])
 		{
 			description.listAppend("Next fight in " + HTMLGenerateSpanFont(crystalBallZone, "black") + " will be: " + HTMLGenerateSpanFont(crystalBallPrediction, "black"));
 			description.listAppend("" + HTMLGenerateSpanFont("Equip the miniature crystal ball first!", "red") + "");
-			optional_task_entries.listAppend(ChecklistEntryMake(image_name, url, ChecklistSubentryMake(title, description), -11));
+			resource_entries.listAppend(ChecklistEntryMake(image_name, url, ChecklistSubentryMake(title, description), -11));
 		}
 		else
 		{
 			description.listAppend("Equip the miniature crystal ball to predict a monster!");
-			optional_task_entries.listAppend(ChecklistEntryMake("__item miniature crystal ball", url, ChecklistSubentryMake(title, description)));
+			resource_entries.listAppend(ChecklistEntryMake("__item miniature crystal ball", url, ChecklistSubentryMake(title, description)));
 		}
 	}
 	else
@@ -50158,12 +50158,12 @@ void IOTMCrystalBallGenerateTasks(ChecklistEntry [int] task_entries, ChecklistEn
 		if (crystalBallPrediction != $monster[none])
 		{
 			description.listAppend("Next fight in " + HTMLGenerateSpanFont(crystalBallZone, "blue") + " will be: " + HTMLGenerateSpanFont(crystalBallPrediction, "blue"));
-			optional_task_entries.listAppend(ChecklistEntryMake(image_name, url, ChecklistSubentryMake(title, description), -11));
+			resource_entries.listAppend(ChecklistEntryMake(image_name, url, ChecklistSubentryMake(title, description), -11));
 		}
 		else
 		{
 			description.listAppend("Adventure in a snarfblat to predict a monster!");
-			optional_task_entries.listAppend(ChecklistEntryMake("__item quantum of familiar", url, ChecklistSubentryMake(title, description)));
+			resource_entries.listAppend(ChecklistEntryMake("__item quantum of familiar", url, ChecklistSubentryMake(title, description)));
 		}	
 	}
 }
@@ -50350,7 +50350,7 @@ void IOTMFamiliarScrapbookGenerateResource(ChecklistEntry [int] resource_entries
 		if (!have_equipped($item[familiar scrapbook]))
 			description.listAppend(HTMLGenerateSpanFont("Equip the familiar scrapbook first", "red"));
 		
-		string url;
+		string url = invSearch("familiar scrapbook");
 		resource_entries.listAppend(ChecklistEntryMake("__item familiar scrapbook", url, ChecklistSubentryMake(familiar_scraps / 100 + " scrapbook banishes available", "", description)).ChecklistEntrySetCombinationTag("banish").ChecklistEntrySetIDTag("Familiar scrapbook boring pictures banish"));
 	}
 }
@@ -50576,7 +50576,7 @@ void IOTMColdMedicineCabinetGenerateTasks(ChecklistEntry [int] task_entries, Che
 	{
 		description.listAppend("Neaaaar, faaaaaaar, wherever you aaaaaaaare, I believe that the heart does go on.");
 		description.listAppend("Will appear in any zone, so try to find a zone with few monsters.");
-		optional_task_entries.listAppend(ChecklistEntryMake("__monster " + gregarious_monster, url, ChecklistSubentryMake("Fight " + pluralise(fights_left, "more gregarious " + gregarious_monster, "more gregarious " + gregarious_monster + "s"), "", description), -1));
+		resource_entries.listAppend(ChecklistEntryMake("__monster " + gregarious_monster, url, ChecklistSubentryMake("Fight " + pluralise(fights_left, "more gregarious " + gregarious_monster, "more gregarious " + gregarious_monster + "s"), "", description), -1));
 	}
 	if (!__iotms_usable[lookupItem("cold medicine cabinet")])
 		return;
@@ -50592,13 +50592,13 @@ void IOTMColdMedicineCabinetGenerateTasks(ChecklistEntry [int] task_entries, Che
 		{
 			description.listAppend(HTMLGenerateSpanFont("Consultation ready next turn!", "blue"));
 			description.listAppend("You have " + CMC_consults + " consultations remaining.");
-			optional_task_entries.listAppend(ChecklistEntryMake("__item snow suit", url, ChecklistSubentryMake("The cold medicine cabinet is almost in session", "", description), -11));
+			resource_entries.listAppend(ChecklistEntryMake("__item snow suit", url, ChecklistSubentryMake("The cold medicine cabinet is almost in session", "", description), -11));
 		}
 		else if (next_CMC_Turn <= total_turns_played())
 		{
 			description.listAppend(HTMLGenerateSpanFont("Just what the doctor ordered!", "blue"));
 			description.listAppend("You have " + CMC_consults + " consultations remaining.");
-			optional_task_entries.listAppend(ChecklistEntryMake("__item snow suit", url, ChecklistSubentryMake("The cold medicine cabinet is in session", "", description), -11));
+			resource_entries.listAppend(ChecklistEntryMake("__item snow suit", url, ChecklistSubentryMake("The cold medicine cabinet is in session", "", description), -11));
 		}
 	}
 }
