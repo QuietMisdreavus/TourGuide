@@ -47572,7 +47572,7 @@ void IOTMGodLobsterGenerateResource(ChecklistEntry [int] resource_entries)
 }
 
 RegisterTaskGenerationFunction("IOTMBoomBoxGenerateTasks");
-void IOTMBoomBoxGenerateTasks(ChecklistEntry [int] task_entries, ChecklistEntry [int] optional_task_entries, ChecklistEntry [int] future_task_entries)
+void IOTMBoomBoxGenerateTasks(ChecklistEntry [int] resource_entries)
 {
 	if (lookupItem("SongBoom&trade; BoomBox").available_amount() == 0)
 		return;
@@ -50128,7 +50128,7 @@ void IOTMCommerceGhostGenerateTasks(ChecklistEntry [int] task_entries, Checklist
 //2021
 //Miniature Crystal ball
 RegisterTaskGenerationFunction("IOTMCrystalBallGenerateTasks");
-void IOTMCrystalBallGenerateTasks(ChecklistEntry [int] task_entries, ChecklistEntry [int] optional_task_entries, ChecklistEntry [int] future_task_entries)
+void IOTMCrystalBallGenerateTasks(ChecklistEntry [int] resource_entries)
 {
 	if (lookupItem("miniature crystal ball").available_amount() == 0)
 		return;
