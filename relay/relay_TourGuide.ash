@@ -47571,7 +47571,7 @@ void IOTMGodLobsterGenerateResource(ChecklistEntry [int] resource_entries)
     resource_entries.listAppend(ChecklistEntryMake("__familiar god lobster", url, ChecklistSubentryMake(pluralise(free_fights_left, "free God Lobster fight", "free God Lobster fights"), "", description)).ChecklistEntrySetCombinationTag("daily free fight").ChecklistEntrySetIDTag("God lobster daily fights"));
 }
 
-RegisterTaskGenerationFunction("IOTMBoomBoxGenerateTasks");
+RegisterResourceGenerationFunction("IOTMBoomBoxGenerateTasks");
 void IOTMBoomBoxGenerateTasks(ChecklistEntry [int] resource_entries)
 {
 	if (lookupItem("SongBoom&trade; BoomBox").available_amount() == 0)
@@ -50127,7 +50127,7 @@ void IOTMCommerceGhostGenerateTasks(ChecklistEntry [int] task_entries, Checklist
 // 2021
 //2021
 //Miniature Crystal ball
-RegisterTaskGenerationFunction("IOTMCrystalBallGenerateTasks");
+RegisterResourceGenerationFunction("IOTMCrystalBallGenerateTasks");
 void IOTMCrystalBallGenerateTasks(ChecklistEntry [int] resource_entries)
 {
 	if (lookupItem("miniature crystal ball").available_amount() == 0)
@@ -50564,7 +50564,7 @@ void IOTMDaylightShavingsHelmetGenerateTasks(ChecklistEntry [int] task_entries, 
 	}
 }
 //Cold Medicine Cabinet
-RegisterTaskGenerationFunction("IOTMColdMedicineCabinetGenerateTasks");
+RegisterResourceGenerationFunction("IOTMColdMedicineCabinetGenerateTasks");
 void IOTMColdMedicineCabinetGenerateTasks(ChecklistEntry [int] resource_entries)
 {
 	monster gregarious_monster = get_property_monster("beGregariousMonster");
