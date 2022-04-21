@@ -50565,7 +50565,7 @@ void IOTMDaylightShavingsHelmetGenerateTasks(ChecklistEntry [int] task_entries, 
 }
 //Cold Medicine Cabinet
 RegisterTaskGenerationFunction("IOTMColdMedicineCabinetGenerateTasks");
-void IOTMColdMedicineCabinetGenerateTasks(ChecklistEntry [int] task_entries, ChecklistEntry [int] optional_task_entries, ChecklistEntry [int] future_task_entries)
+void IOTMColdMedicineCabinetGenerateTasks(ChecklistEntry [int] resource_entries)
 {
 	monster gregarious_monster = get_property_monster("beGregariousMonster");
 	int fights_left = clampi(get_property_int("beGregariousFightsLeft"), 0, 3);
